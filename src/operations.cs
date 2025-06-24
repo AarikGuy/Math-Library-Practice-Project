@@ -38,6 +38,9 @@ public class Operations
         return retVal;
     }
 
+    /**
+    Returns the absolute value of the number specified
+    */
     public double AbsoluteVal(double x)
     {
         if (x < 0)
@@ -48,8 +51,15 @@ public class Operations
         return x;
     }
 
+    /**
+    Returns the inverse of the number specified.
+    */
     public double Inverse(double numToBeInversed)
     {
+        if (numToBeInversed == 0)
+        {
+            throw new ArithmeticException("The inverse of 0 is undefined.");
+        }
         return Power(numToBeInversed, -1);
     }
 }

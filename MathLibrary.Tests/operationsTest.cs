@@ -32,15 +32,15 @@ namespace MathLibrary.Tests
             Assert.Equal(1024, result);
         }
 
-        [Fact] //In C# an int can have a max value of 2,147,483,647. (32 bit)
-               //  May be beneficial to swap types to floating point nums or doubles.
+        [Fact] //An int can have a max value of 2,147,483,647. (32 bit)
                // 2^31 = 2,147,483,648
         public void Power_2_to_the_31_edge_case()
         {
             op = new Operations();
             result = op.Power(2, 31);
-            Assert.Equal(2147483647, result - 1);
-            Assert.NotEqual(2147483647, result);
+            Assert.Equal(2147483647, result - 1); //Tests the integer edge case.
+            Assert.Equal(2147483648.0, result); //Tests the expected behavior of a double.
+            Assert.NotEqual(2147483647, result); //Tests more of the integer edge case.
         }
 
         [Fact]
@@ -51,7 +51,7 @@ namespace MathLibrary.Tests
             Assert.Equal(1, result);
         }
 
-               [Fact]
+        [Fact]
         public void AbsoluteVal_of_one()
         {
             op = new Operations();
@@ -81,6 +81,22 @@ namespace MathLibrary.Tests
             op = new Operations();
             result = op.Inverse(7.0);
             Assert.Equal(1.0 / 7.0, result);
+        }
+
+        [Fact]
+        public void Inverse_of_1_over_7()
+        {
+            op = new Operations();
+            result = op.Inverse(1.0 / 7.0);
+            Assert.Equal(7.0, result);
+        }
+        
+                [Fact]
+        public void Inverse_of_0()
+        {
+            op = new Operations();
+            result = op.Inverse(0);
+            Assert.Throws<ArithmeticException>(() => result);
         }
         
     }
