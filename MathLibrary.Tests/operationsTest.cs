@@ -6,7 +6,7 @@ namespace MathLibrary.Tests
     public class operationsTest
     {
         private Operations op;
-        private int result;
+        private double result;
 
         [Fact]
         public void Power_2_to_the_3rd()
@@ -44,11 +44,44 @@ namespace MathLibrary.Tests
         }
 
         [Fact]
+        public void AbsoluteVal_of_negative_one()
+        {
+            op = new Operations();
+            result = op.AbsoluteVal(-1.0);
+            Assert.Equal(1, result);
+        }
+
+               [Fact]
+        public void AbsoluteVal_of_one()
+        {
+            op = new Operations();
+            result = op.AbsoluteVal(1.0);
+            Assert.Equal(1, result);
+        }
+
+        [Fact]
+        public void AbsoluteVal_of_negative_one_half()
+        {
+            op = new Operations();
+            result = op.AbsoluteVal(-0.5);
+            Assert.Equal(0.5, result);
+        }
+
+        [Fact]
+        public void Power_2_to_negative_one()
+        {
+            op = new Operations();
+            result = op.Power(2, -1);
+            Assert.Equal(.5, result);
+        }
+
+        [Fact]
         public void Inverse_of_7()
         {
             op = new Operations();
-            result = (int)op.Inverse(7);
-            Assert.Equal(1 / 7, result);
+            result = op.Inverse(7.0);
+            Assert.Equal(1.0 / 7.0, result);
         }
+        
     }
 }

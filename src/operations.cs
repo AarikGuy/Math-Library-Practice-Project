@@ -15,20 +15,41 @@ public class Operations
     Takes an existing number x, the coefficient and lets 
     users specify what number they want as their power to the coefficient
     */
-    public int Power(int x, int y)
+    public double Power(double x, double y)
     {
-        int retVal = 1;
+        double retVal = 1;
 
-        for (int i = 0; i < y; i++)
+
+
+        for (double i = 1; i <= AbsoluteVal(y); i++)
         {
-            retVal *= x;
+            //if y is positive
+            if (y > 0)
+            {
+                retVal *= x;
+            }
+            //if y is negative
+            if (y < 0)
+            {
+                retVal /= x;
+            }
         }
 
         return retVal;
     }
 
-    public double Inverse(int numToBeInversed)
+    public double AbsoluteVal(double x)
     {
-      return Power(numToBeInversed, -1);
+        if (x < 0)
+        {
+            return x * -1;
+        }
+
+        return x;
+    }
+
+    public double Inverse(double numToBeInversed)
+    {
+        return Power(numToBeInversed, -1);
     }
 }
