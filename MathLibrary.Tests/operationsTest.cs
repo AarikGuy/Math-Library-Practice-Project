@@ -91,12 +91,12 @@ namespace MathLibrary.Tests
             Assert.Equal(7.0, result);
         }
         
-                [Fact]
+        [Fact]
         public void Inverse_of_0()
         {
             op = new Operations();
-            result = op.Inverse(0);
-            Assert.Throws<ArithmeticException>(() => result);
+            
+            Assert.Throws<ArithmeticException>(() => op.Inverse(0));
         }
         
     }
