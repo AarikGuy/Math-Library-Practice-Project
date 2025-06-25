@@ -1,3 +1,4 @@
+/// <inheritdoc/>
 public class Formulas : FormulasInterface
 {
     public double AreaOfCircle(double radius)
