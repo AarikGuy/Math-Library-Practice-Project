@@ -3,7 +3,7 @@ using MathLibrary;
 
 namespace MathLibrary;
 
-public class Operations
+public class Operations : OperationsInterface
 {
     public static void Run()
     {
@@ -61,5 +61,35 @@ public class Operations
             throw new ArithmeticException("The inverse of 0 is undefined.");
         }
         return Power(numToBeInversed, -1);
+    }
+
+    public bool IsPrime(double x)
+    {
+        throw new NotImplementedException();
+    }
+
+    public double Squared(double x)
+    {
+        return x * x;
+    }
+
+    public double Cubed(double x)
+    {
+        throw new NotImplementedException();
+    }
+
+    public double SquareRoot(double x)
+    {
+        throw new NotImplementedException();
+    }
+
+    public double Factorial(double x)
+    {
+        throw new NotImplementedException();
+    }
+
+    public double Log(double value, double baseVal)
+    {
+        throw new NotImplementedException();
     }
 }
