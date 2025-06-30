@@ -80,7 +80,7 @@ public class Operations : OperationsInterface
 
     public double SquareRoot(double x)
     {
-        throw new NotImplementedException();
+        return Power(x, 1 / 2);
     }
 
     public double Factorial(double x)
