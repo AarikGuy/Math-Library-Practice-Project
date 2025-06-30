@@ -90,13 +90,38 @@ namespace MathLibrary.Tests
             result = op.Inverse(1.0 / 7.0);
             Assert.Equal(7.0, result);
         }
-        
+
         [Fact]
         public void Inverse_of_0()
         {
             op = new Operations();
-            
+
             Assert.Throws<ArithmeticException>(() => op.Inverse(0));
+        }
+
+        [Fact]
+        public void _2_Cubed()
+        {
+            op = new Operations();
+            result = op.Cubed(2);
+            Assert.Equal(8, result);
+        }
+
+
+        [Fact]
+        public void _3_Cubed()
+        {
+            op = new Operations();
+            result = op.Cubed(3);
+            Assert.Equal(27, result);
+        }
+
+                [Fact]
+        public void negative_2_Cubed()
+        {
+            op = new Operations();
+            result = op.Cubed(-2);
+            Assert.Equal(-8, result);
         }
         
     }
