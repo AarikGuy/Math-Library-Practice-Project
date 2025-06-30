@@ -3,9 +3,9 @@ using MathLibrary;
 
 namespace MathLibrary.Tests
 {
-    public class operationsTest
+    public class OperationsTest
     {
-        private Operations op;
+        private OperationsInterface op;
         private double result;
 
         [Fact]
@@ -90,13 +90,68 @@ namespace MathLibrary.Tests
             result = op.Inverse(1.0 / 7.0);
             Assert.Equal(7.0, result);
         }
-        
+
         [Fact]
         public void Inverse_of_0()
         {
             op = new Operations();
-            
+
             Assert.Throws<ArithmeticException>(() => op.Inverse(0));
+        }
+
+        [Fact]
+        public void Square_of_3()
+        {
+            op = new Operations();
+            result = op.Squared(3.0);
+            Assert.Equal(9.0, result);
+        }
+
+        [Fact]
+        public void Square_of_one_half()
+        {
+            op = new Operations();
+            result = op.Squared(0.5);
+            Assert.Equal(0.25, result);
+        }
+
+        [Fact]
+        public void Square_of_negative_3()
+        {
+            op = new Operations();
+            result = op.Squared(-3.0);
+            Assert.Equal(9.0, result);
+        }
+
+        [Fact]
+        public void Factorial_of_0()
+        {
+            op = new Operations();
+            result = op.Factorial(0);
+            Assert.Equal(1.0, result);
+        }
+
+        [Fact]
+        public void Factorial_of_1()
+        {
+            op = new Operations();
+            result = op.Factorial(1);
+            Assert.Equal(1.0, result);
+        }
+
+        [Fact]
+        public void Factorial_of_4()
+        {
+            op = new Operations();
+            result = op.Factorial(4);
+            Assert.Equal(24.0, result);
+        }
+
+        [Fact]
+        public void Factorial_of_negative_1()
+        {
+            op = new Operations();
+            Assert.Throws<ArithmeticException>(() => op.Factorial(-1));
         }
         
     }
