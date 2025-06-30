@@ -2,8 +2,6 @@ using System.Reflection.Metadata;
 
 public interface FormulasInterface
 {
-    const double Pi = 3.14159265;
-
     /// <summary>
     /// This is the quadratic formula. 
     /// This is used to help find the x intercepts of your function.

@@ -1,14 +1,22 @@
+using System;
+using MathLibrary;
+
+namespace MathLibrary;
+
 /// <inheritdoc/>
-public class Formulas : FormulasInterface
+public class Formulas : Operations, FormulasInterface
 {
     public double AreaOfCircle(double radius)
     {
-        throw new NotImplementedException();
+        return Squared(radius) * Pi;
     }
 
     public double BinomialCoefficient(double n, double k)
     {
-        throw new NotImplementedException();
+        double numerator = Factorial(n);
+        double denominator = Factorial(k) * Factorial(n - k);
+
+        return numerator / denominator;
     }
 
     public double[] Quadratic(double a, double b, double c)

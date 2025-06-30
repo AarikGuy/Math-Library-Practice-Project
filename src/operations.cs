@@ -5,6 +5,8 @@ namespace MathLibrary;
 
 public class Operations : OperationsInterface
 {
+      public const double Pi = 3.14159265;
+
     public static void Run()
     {
         Console.WriteLine("Test test test");
@@ -85,7 +87,24 @@ public class Operations : OperationsInterface
 
     public double Factorial(double x)
     {
-        throw new NotImplementedException();
+        if (x < 0)
+        {
+            throw new ArithmeticException("You can't calculate the factorial of a negative.\n" + 
+            "Factorial is defined as the product of all positive integers less than or equal\n" +
+            " to a non-negative integer.");
+        }
+
+        double retVal = 1;
+
+        while (x > 0)
+        {
+            retVal *= x;
+
+            x--;
+        }
+
+        return retVal;
+
     }
 
     public double Log(double value, double baseVal)

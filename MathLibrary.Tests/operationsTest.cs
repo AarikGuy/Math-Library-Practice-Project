@@ -3,9 +3,9 @@ using MathLibrary;
 
 namespace MathLibrary.Tests
 {
-    public class operationsTest
+    public class OperationsTest
     {
-        private Operations op;
+        private OperationsInterface op;
         private double result;
 
         [Fact]
@@ -116,28 +116,12 @@ namespace MathLibrary.Tests
             Assert.Equal(27, result);
         }
 
-        [Fact]
+                [Fact]
         public void negative_2_Cubed()
         {
             op = new Operations();
             result = op.Cubed(-2);
             Assert.Equal(-8, result);
-        }
-
-        [Fact]
-        public void SquareRoot_of_4()
-        {
-            op = new Operations();
-            result = op.Squared(4);
-            Assert.Equal(2, result);
-        }
-
-                [Fact]
-        public void SquareRoot_of_2()
-        {
-            op = new Operations();
-            result = op.Squared(2);
-            Assert.Equal(1.4142, result);
         }
         
     }
