@@ -77,7 +77,7 @@ public class Operations : OperationsInterface
 
     public double Cubed(double x)
     {
-        throw new NotImplementedException();
+        return x * x * x;
     }
 
     public double SquareRoot(double x)
