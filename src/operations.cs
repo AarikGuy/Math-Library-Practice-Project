@@ -7,12 +7,6 @@ public class Operations : OperationsInterface
 {
       public const double Pi = 3.14159265;
 
-    public static void Run()
-    {
-        Console.WriteLine("Test test test");
-    }
-
-
     /**
     Takes an existing number x, the coefficient and lets 
     users specify what number they want as their power to the coefficient
@@ -49,6 +43,7 @@ public class Operations : OperationsInterface
     //Helper method to help approximate decimal powers
     //This method only works if it's in the square root form i.e. 5^(3/4) ==> 4sqrt(125)
     //I need to essentially write logs/lns for this to work
+    //TODO: Fix this code because this isn't correct. Needed to implement Log for this to work.
     public double NewtonsMethod(double num, double power)
     {
         double retVal = 1;
@@ -104,6 +99,10 @@ public class Operations : OperationsInterface
 
     public double SquareRoot(double x)
     {
+        if (x < 0)
+        {
+            throw new ArithmeticException("The square root of any negative number would produce an imaginary number.");
+        }
         return Power(x, 1.0 / 2.0);
     }
 
@@ -133,6 +132,14 @@ public class Operations : OperationsInterface
     {
         double iter = baseVal;
         double counter = 1;
+
+        //TODO: implement special case of when the return value will be a decimal.
+
+        //Implement log(ab) = log(a) + log(b)
+
+        //Implement log(a/b) = log(a) - log(b)
+
+        //Implement log(a^n) = n*log(a)
 
         //This works only if the answers are whole numbers.
         while (iter != value)

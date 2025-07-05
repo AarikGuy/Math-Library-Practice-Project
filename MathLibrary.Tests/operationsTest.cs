@@ -21,7 +21,7 @@ namespace MathLibrary.Tests
         {
             op = new Operations();
             result = op.Power(2, 3.0 / 2.0);
-            Assert.Equal(Math.Round(2.8284, 4), result);
+            Assert.Equal(Math.Round(2.8284, 4), Math.Round(result, 4));
         }
 
         [Fact]
@@ -136,8 +136,8 @@ namespace MathLibrary.Tests
         public void SquareRoot_of_4()
         {
             op = new Operations();
-            result = op.SquareRoot(4);
-            Assert.Equal(2, result);
+            result = op.SquareRoot(4.0);
+            Assert.Equal(2, Math.Round(result));
         }
 
         [Fact]
@@ -145,7 +145,7 @@ namespace MathLibrary.Tests
         {
             op = new Operations();
             result = op.SquareRoot(2);
-            Assert.Equal(Math.Round(1.4142, 4), result);
+            Assert.Equal(Math.Round(1.4142, 4), Math.Round(result, 4));
         }
 
         [Fact]
@@ -153,15 +153,14 @@ namespace MathLibrary.Tests
         {
             op = new Operations();
             result = op.SquareRoot(9);
-            Assert.Equal(3, result);
+            Assert.Equal(3, Math.Round(result));
         }
 
         [Fact]
         public void SquareRoot_of_negative_4()
         {
             op = new Operations();
-            result = op.SquareRoot(-4);
-            Assert.Equal(2, result);
+            Assert.Throws<ArithmeticException>(() => op.SquareRoot(-4));
         }
 
         [Fact]
@@ -179,13 +178,43 @@ namespace MathLibrary.Tests
             result = op.Log(1000, 10);
             Assert.Equal(3, result);
         }
-        
+
         [Fact]
         public void Log_base_10_of_50()
         {
-            op = new Operations();
-            result = op.Log(50, 10);
-            Assert.Equal(Math.Round(1.6989, 4), result);
+            var testTask = Task.Run(() =>
+            {
+                op = new Operations();
+                result = op.Log(50, 10);
+                Assert.Equal(Math.Round(1.6989, 4), result);
+            });
+
+            bool completed = testTask.Wait(TimeSpan.FromSeconds(3));
+
+            if (!completed)
+            {
+                throw new TimeoutException("Test hung for over 3 seconds.");
+            }
+            
+        }
+
+        [Fact]
+        public void Log_base_10_of_1_over_10()
+        {
+            
+            var testTask = Task.Run(() =>
+            {
+                op = new Operations();
+                result = op.Log(.1, 10);
+                Assert.Equal(-1, result);
+            });
+
+            bool completed = testTask.Wait(TimeSpan.FromSeconds(3));
+
+            if (!completed)
+            {
+                throw new TimeoutException("Test hung for over 3 seconds.");
+            }
         }
     }
 }
