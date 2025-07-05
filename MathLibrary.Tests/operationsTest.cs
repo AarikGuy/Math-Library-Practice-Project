@@ -17,6 +17,14 @@ namespace MathLibrary.Tests
         }
 
         [Fact]
+        public void Power_2_to_the_3_over_2()
+        {
+            op = new Operations();
+            result = op.Power(2, 3.0 / 2.0);
+            Assert.Equal(Math.Round(2.8284, 4), result);
+        }
+
+        [Fact]
         public void Power_2_to_the_0()
         {
             op = new Operations();
@@ -116,13 +124,68 @@ namespace MathLibrary.Tests
             Assert.Equal(27, result);
         }
 
-                [Fact]
+        [Fact]
         public void negative_2_Cubed()
         {
             op = new Operations();
             result = op.Cubed(-2);
             Assert.Equal(-8, result);
         }
+
+        [Fact]
+        public void SquareRoot_of_4()
+        {
+            op = new Operations();
+            result = op.SquareRoot(4);
+            Assert.Equal(2, result);
+        }
+
+        [Fact]
+        public void SquareRoot_of_2()
+        {
+            op = new Operations();
+            result = op.SquareRoot(2);
+            Assert.Equal(Math.Round(1.4142, 4), result);
+        }
+
+        [Fact]
+        public void SquareRoot_of_9()
+        {
+            op = new Operations();
+            result = op.SquareRoot(9);
+            Assert.Equal(3, result);
+        }
+
+        [Fact]
+        public void SquareRoot_of_negative_4()
+        {
+            op = new Operations();
+            result = op.SquareRoot(-4);
+            Assert.Equal(2, result);
+        }
+
+        [Fact]
+        public void Log_base_2_of_8()
+        {
+            op = new Operations();
+            result = op.Log(8, 2);
+            Assert.Equal(3, result);
+        }
+
+        [Fact]
+        public void Log_base_10_of_1000()
+        {
+            op = new Operations();
+            result = op.Log(1000, 10);
+            Assert.Equal(3, result);
+        }
         
+        [Fact]
+        public void Log_base_10_of_50()
+        {
+            op = new Operations();
+            result = op.Log(50, 10);
+            Assert.Equal(Math.Round(1.6989, 4), result);
+        }
     }
 }

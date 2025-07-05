@@ -21,8 +21,14 @@ public class Operations : OperationsInterface
     {
         double retVal = 1;
 
+        // If the exponent is not a whole number than use Newton's Method.
+        if (y % 1 != 0)
+        {
+            return NewtonsMethod(x, y);
+        }
 
 
+        //This only works if the numbers are whole
         for (double i = 1; i <= AbsoluteVal(y); i++)
         {
             //if y is positive
@@ -39,6 +45,22 @@ public class Operations : OperationsInterface
 
         return retVal;
     }
+
+    //Helper method to help approximate decimal powers
+    //This method only works if it's in the square root form i.e. 5^(3/4) ==> 4sqrt(125)
+    //I need to essentially write logs/lns for this to work
+    public double NewtonsMethod(double num, double power)
+    {
+        double retVal = 1;
+
+        for (int i = 0; i < 5; i++)
+        {
+            retVal = 1.0 / 2.0 * (retVal + (num / retVal));
+        }
+
+        return retVal;
+    }
+
 
     /**
     Returns the absolute value of the number specified
@@ -82,7 +104,7 @@ public class Operations : OperationsInterface
 
     public double SquareRoot(double x)
     {
-        return Power(x, 1 / 2);
+        return Power(x, 1.0 / 2.0);
     }
 
     public double Factorial(double x)
@@ -109,6 +131,16 @@ public class Operations : OperationsInterface
 
     public double Log(double value, double baseVal)
     {
-        throw new NotImplementedException();
+        double iter = baseVal;
+        double counter = 1;
+
+        //This works only if the answers are whole numbers.
+        while (iter != value)
+        {
+            iter *= baseVal;
+            counter++;
+        }
+
+        return counter;
     }
 }
