@@ -50,7 +50,7 @@ public class Operations : OperationsInterface
 
         for (int i = 0; i < 5; i++)
         {
-            retVal = 1.0 / 2.0 * (retVal + (num / retVal));
+            retVal = power * (retVal + (num / retVal));
         }
 
         return retVal;
