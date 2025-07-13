@@ -25,6 +25,22 @@ namespace MathLibrary.Tests
         }
 
         [Fact]
+        public void Power_2_to_the_1_over_3()
+        {
+            op = new Operations();
+            result = op.Power(2, 1.0 / 3.0);
+            Assert.Equal(Math.Round(1.2599, 4), Math.Round(result, 4));
+        }
+
+              [Fact]
+        public void Power_2_to_the_1_over_2()
+        {
+            op = new Operations();
+            result = op.Power(2, 1.0 / 2.0);
+            Assert.Equal(Math.Round(1.4142, 4), Math.Round(result, 4));
+        }
+
+        [Fact]
         public void Power_2_to_the_0()
         {
             op = new Operations();
@@ -177,6 +193,70 @@ namespace MathLibrary.Tests
             op = new Operations();
             result = op.Log(1000, 10);
             Assert.Equal(3, result);
+        }
+
+        [Fact]
+        public void Ln_3_over_2() //1.5
+        {
+            op = new Operations();
+            result = op.Ln(3.0/2.0);
+            Assert.Equal(0.4055, Math.Round(result, 4));
+        }
+
+        [Fact]
+        public void Ln_2()
+        {
+            op = new Operations();
+            result = op.Ln(2);
+            Assert.Equal(0.6931, Math.Round(result, 4));
+        }
+
+        [Fact]
+        public void Ln_point_1()
+        {
+            op = new Operations();
+            result = op.Ln(.1);
+            Assert.Equal(-2.3026, Math.Round(result, 4));
+        }
+
+        [Fact]
+        public void Ln_2_point_7()
+        {
+            op = new Operations();
+            result = op.Ln(2.7);
+            Assert.Equal(0.9932, Math.Round(result, 4));
+        }
+
+        [Fact]
+        public void Ln_3()
+        {
+            op = new Operations();
+            result = op.Ln(3);
+            Assert.Equal(1.0986, Math.Round(result, 4));
+        }
+        
+        [Fact]
+        public void Ln_4()
+        {
+            op = new Operations();
+            result = op.Ln(4);
+            Assert.Equal(1.3863, Math.Round(result, 4));
+        }
+
+        [Fact]
+        public void Ln_5()
+        {
+            op = new Operations();
+            result = op.Ln(5);
+            Assert.Equal(1.6094, Math.Round(result, 4));
+        }
+
+        [Fact]
+        public void Ln_10()
+        {
+            op = new Operations();
+            result = op.Ln(10);
+            Assert.Equal(2.3026, Math.Round(result, 4));
         }
 
         [Fact]

@@ -9,4 +9,5 @@ public interface OperationsInterface
     double SquareRoot(double x);
     double Factorial(double x);
     double Log(double value, double baseVal);
+    double Ln(double x);
 }

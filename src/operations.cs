@@ -5,7 +5,8 @@ namespace MathLibrary;
 
 public class Operations : OperationsInterface
 {
-      public const double Pi = 3.14159265;
+    public const double Pi = 3.14159265;
+    public const double e = 2.718281828459045;
 
     /**
     Takes an existing number x, the coefficient and lets 
@@ -18,6 +19,14 @@ public class Operations : OperationsInterface
         // If the exponent is not a whole number than use Newton's Method.
         if (y % 1 != 0)
         {
+
+
+
+            // This solves fractional powers that can use the sqrt rule
+            // a^m/n ==> sqrt(a^m) e.g: 5^3/2 ==> sqrt(5^3) ==> sqrt(125) ==> 11.1803
+
+
+            // Solves square roots
             return NewtonsMethod(x, y);
         }
 
@@ -110,7 +119,7 @@ public class Operations : OperationsInterface
     {
         if (x < 0)
         {
-            throw new ArithmeticException("You can't calculate the factorial of a negative.\n" + 
+            throw new ArithmeticException("You can't calculate the factorial of a negative.\n" +
             "Factorial is defined as the product of all positive integers less than or equal\n" +
             " to a non-negative integer.");
         }
@@ -149,5 +158,43 @@ public class Operations : OperationsInterface
         }
 
         return counter;
+    }
+
+    public double Ln(double x)
+    {
+        double numerator = x - 1;
+        double retVal = 0;
+
+        // 1 edge case
+        if (x == 1)
+        {
+            return 0;
+        }
+
+        // Negatives edge case
+        if (x < 0)
+        {
+            throw new ArithmeticException("The log function is defined only for positive real numbers.");
+        }
+
+        // Taylor Series
+
+        // This only works for numbers that output a value that is lower than 1... for the most part. e.g. ln(2.71) should ==> .9969 but output NaN.
+        for (int i = 1; i <= 10000; i++)
+        {
+            if (i % 2 == 0)
+            {
+                retVal -= Power(numerator, i) / i;
+            }
+            else
+            {
+                retVal += Power(numerator, i) / i;
+            }
+
+
+        }
+
+        return retVal;
+
     }
 }
